@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import Home from "./src/components/pages/home/home";
+import Home from "./src/view/pages/home/home";
 
 export default function App() {
   return (

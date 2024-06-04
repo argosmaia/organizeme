@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
-import Header from "../../header/cabecalho";
-import Balanco from "../../balanco/balanco";
-import EntradaView from "../../view/entradadedados";
-import GlobalButton from "../../view/botao";
+import Header from "../../../components/header/cabecalho";
+import Balanco from "../../../components/balanco/balanco";
+import EntradaView from "../../entradadedados";
+import GlobalButton from "../../botao";
 import { calcularTotais } from "../../../services/validarentradas";
 // import GlobalButton from "../../views/GlobalButton";
 
@@ -28,7 +28,7 @@ export default function Home() {
     return (
         <View style={styles.container}>
             <Header name="Argos Maia" />
-            <EntradaDados
+            <EntradaView
                 visible={modalVisible}
                 onClose={handleCloseModal}
                 onSalvar={handleSalvarDados}
