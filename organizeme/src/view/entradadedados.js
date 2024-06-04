@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import { View, TextInput, Button, StyleSheet, Modal, TouchableOpacity, Text } from "react-native";
+import { View,  StyleSheet, Modal, TouchableWithoutFeedback, TouchableOpacity, Text } from "react-native";
 import { validarEntradas } from "../services/validarentradas";
+import { BlurView } from "expo-blur";
 
 export default function EntradaView({ visible, onClose, onSalvar }) {
     const [receita, setReceita] = useState("");
     const [despesa, setDespesa] = useState("");
     const [opcaoSelecionada, setOpcaoSelecionada] = useState("receita");
 
-    const lidarComOpcao = (opcao) => {
+    const lidarComOpca = (opcao) => {
         setOpcaoSelecionada(opcao);
         onClose();
     };
@@ -26,11 +27,20 @@ export default function EntradaView({ visible, onClose, onSalvar }) {
 
     return (
         <Modal
-          transparente={true}
-          tipoAnimacao="slide"
+          transparent={true}
+          animationType="slide"
           visible={visible}
           onRequestClose={onClose}
         >
+          <BlurView
+            style={styles.absolute}
+            blurType="light"
+            blurAmount={10}
+            intensity={50}
+            reducedTransparencyFallbackColor="white"
+          />
+          <TouchableOpacity style={styles.containerModal} activeOpacity={1} onPressOut={onClose}></TouchableOpacity>
+          <TouchableWithoutFeedback>
           <View style={styles.containerModal}>
             <View style={styles.container}>
               <TouchableOpacity style={styles.opcao} onPress={() => lidarComOpcao("Receita")}>
@@ -55,9 +65,8 @@ export default function EntradaView({ visible, onClose, onSalvar }) {
                     onChangeText={setReceita}
                     keyboardType="numeric"
                   />
-                  <Button title="Salvar" onPress={handleSalvarDados} />
-                */}
-                </> 
+                  <Button title="Salvar" onPress={handleSalvarDados} /> */}
+                </>
               )}
     
               <TouchableOpacity onPress={onClose} style={styles.botaoFechar}>
@@ -65,11 +74,19 @@ export default function EntradaView({ visible, onClose, onSalvar }) {
               </TouchableOpacity>
             </View>
           </View>
+          </TouchableWithoutFeedback>
         </Modal>
       );
     }
     
     const styles = StyleSheet.create({
+      absolute: {
+        position: "absolute",
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0,
+      },
       containerModal: {
         flex: 1,
         justifyContent: 'center',
