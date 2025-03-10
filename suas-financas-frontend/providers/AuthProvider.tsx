@@ -1,8 +1,9 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { AuthContextType } from '@/types/interfaces/AuthContextType';
+import { AuthContext } from '@/context/AuthContext';
+import { AuthProviderProps } from '@/types/props/AuthProviderProps';
 import Cookies from "js-cookie";
 
-export const AuthProvider: React.FC = ({ children }) => {
+export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     useEffect(() => {

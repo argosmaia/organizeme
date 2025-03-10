@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, TouchableOpacity, Image, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
-import { NavbarProps } from "../types/props/NavbarProps";
+import { NavbarProps } from "../../types/props/NavbarProps";
 
 export default function Navbar({ title, imageUri, children }: NavbarProps) {
   const router = useRouter();
