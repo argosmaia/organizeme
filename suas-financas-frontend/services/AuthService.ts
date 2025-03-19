@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const AUTH_TOKEN_KEY = 'authToken';
 
-export default function AuthService() {
+export const AuthService = {
     async getToken(): Promise<string | null> {
         return await AsyncStorage.getItem(AUTH_TOKEN_KEY);
     },
